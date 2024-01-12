@@ -1,7 +1,6 @@
 const listaAlumnos = [];
 
 function agregarAlumno() {
-
     let nombreAlumno = prompt("Ingrese el nombre del alumno:");
     let calificacionAlumno = Number(prompt("Ingrese la calificación del alumno:"));
 
@@ -11,22 +10,29 @@ function agregarAlumno() {
     }
 
     listaAlumnos.push(alumno);
-
 }
 
-function consultarAlumno() {
-    
+function mayorCalif() {
+    const calfBusqueda = Number(prompt("Ingrese la calificación mínima para filtrar:"));
+    const filtrados = listaAlumnos.filter((item) => item.calificacion > calfBusqueda);
+
+    filtrados.forEach((item) => {
+        alert(`
+        Nombre: ${item.nombre}
+        Calificación: ${item.calificacion}
+        `);
+    });
 }
 
 while (true) {
-    let opcion = Number(prompt("Seleccione una opción: \n1. Agregar alumno\n2. Consultar alumnos\n3. Salir"));
+    let opcion = Number(prompt("Seleccione una opción:\n1. Agregar alumno\n2. Consultar alumnos\n3. Salir"));
 
     switch (opcion) {
         case 1:
             agregarAlumno();
             break;
         case 2:
-            consultarAlumnos();
+            mayorCalif();
             break;
         case 3:
             alert("Saliendo del programa.");
@@ -39,5 +45,3 @@ while (true) {
         break;
     }
 }
-
-console.log(listaAlumnos);
